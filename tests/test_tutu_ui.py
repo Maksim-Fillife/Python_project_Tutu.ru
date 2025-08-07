@@ -1,28 +1,9 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium import webdriver
-import os
+
 import dotenv
 dotenv.load_dotenv()
-import pytest
-
-
-
-email = os.getenv("EMAIL")
-password = os.getenv("PASSWORD")
-wr_pass = os.getenv("WRONG_PASSWORD")
-
-@pytest.fixture
-def driver():
-    browser = webdriver.Firefox()
-    browser.maximize_window()
-    browser.implicitly_wait(3)
-    yield browser
-    # browser.quit()
-
-
-
 
 
 def test_valid_authorization(driver):
