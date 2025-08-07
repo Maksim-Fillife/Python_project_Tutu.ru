@@ -1,19 +1,31 @@
 from selenium import webdriver
-import dotenv
-dotenv.load_dotenv()
 import pytest
 import os
+import dotenv
+dotenv.load_dotenv()
 
 
-
-email = os.getenv("EMAIL")
-password = os.getenv("PASSWORD")
-wr_pass = os.getenv("WRONG_PASSWORD")
-
-@pytest.fixture()
+@pytest.fixture(scope='function', autouse=True)
 def driver():
     browser = webdriver.Firefox()
     browser.maximize_window()
     browser.implicitly_wait(3)
     yield browser
     browser.quit()
+
+@pytest.fixture
+def authorization(driver):
+    from pages.auth_page import AuthorizationPage as auth
+    return auth(driver)
+
+@pytest.fixture(scope='function', autouse=True)
+def email():
+    return os.getenv("EMAIL")
+
+@pytest.fixture
+def password():
+    return os.getenv("PASSWORD")
+
+@pytest.fixture
+def wr_pass():
+    return os.getenv("WRONG_PASSWORD")
