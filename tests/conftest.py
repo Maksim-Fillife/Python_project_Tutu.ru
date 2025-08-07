@@ -14,6 +14,11 @@ def driver():
     browser.quit()
 
 @pytest.fixture
+def tickets(driver):
+    from pages.ticket_search_page import TicketSearchPage
+    return TicketSearchPage(driver)
+
+@pytest.fixture
 def authorization(driver):
     from pages.auth_page import AuthorizationPage as auth
     return auth(driver)
