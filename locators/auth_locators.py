@@ -10,7 +10,7 @@ class AuthLocators:
     BTN_SWITCH_TO_PASSWORD = (By.CSS_SELECTOR, "button[data-ti='login-by-password-trigger']")
     INPUT_PASSWORD = (By.CSS_SELECTOR, "input[data-ti='password-field']")
     BTN_SUBMIT_LOGIN = (By.CSS_SELECTOR, "button[data-ti='submit-trigger']")
-    AUTH_SUCCESS = (By.XPATH, "span[data-ti='email']")
+    AUTH_SUCCESS = (By.CSS_SELECTOR, "span[data-ti='email']")
     AUTH_ERROR_MESSAGE = (By.XPATH, "//p[@data-ti-error='authApi']")
 
     # ---Меню пользователя---
