@@ -3,10 +3,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 
-class AuthorizationPage:
+class TicketSearchPage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
+
+    def open(self):
+        self.driver.get("https://www.tutu.ru/")
 
     def bus_ticket(self):
         bus_ticket = self.wait.until(
